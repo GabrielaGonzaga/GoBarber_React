@@ -3,22 +3,31 @@ import { Container, Content, Background, AnimationContainer } from './styles';
 import { FiArrowLeft, FiMail, FiUser, FiLock } from 'react-icons/fi';
 import { FormHandles } from "@unform/core";
 import { Form } from '@unform/web'
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import * as Yup from 'yup';
 
+import { useToast } from "../../hooks/toast";
 import logo from '../../assets/logo.svg';
 import Input from "../../components/input";
 import Button from "../../components/button";
 import getValidationErrors from "../../utils/getValidationErrors";
+import api from "../../services/api";
 
+interface SignUpFormData{
+    name: string,
+    email: string,
+    password: string
+}
 
 const SignUp: React.FC = () =>{
 
     const formRef = useRef<FormHandles>(null);
+    const {addToast} = useToast();
+    const history = useHistory();
 
     console.log(formRef);
 
-    const handleSubmit = useCallback(async (data: object) => {
+    const handleSubmit = useCallback(async (data: SignUpFormData) => {
         try {
 
             formRef.current?.setErrors({})
@@ -33,11 +42,22 @@ const SignUp: React.FC = () =>{
                 abortEarly: false,
             });
 
+            await api.post('/users', data)
+
+            history.push('/');
+
         } catch (err: any) {
-            console.log(err)
-            //@ts-ignore ("Argument of type 'unknown' is not assignable to parameter of type 'ValidationError'")
-            const errors = getValidationErrors(err);
-            formRef.current?.setErrors(errors)
+            if(err instanceof Yup.ValidationError){
+                //@ts-ignore ("Argument of type 'unknown' is not assignable to parameter of type 'ValidationError'")
+                const errors = getValidationErrors(err);
+                formRef.current?.setErrors(errors)
+            }
+
+            addToast({
+                type: 'sucess',
+                title: 'Cadastro realizado com sucesso',
+                description: 'Você já pode realizar logon no GoBarber!',
+            });
         }
     }, [])
 
