@@ -17,7 +17,7 @@ export const Container = styled.div<ContainerProps>`
     display: flex;
     align-items: center;
     color: #666360;
-
+    
     & + div{
         margin-top: 8px;
     } 
@@ -37,22 +37,34 @@ export const Container = styled.div<ContainerProps>`
 
    
 
-    input{
+    select{
         flex: 1;
         background: transparent;
-        border: 0;
+        border: none;
+        outline: none;
         color: #f4ede8;
+        font-family: 'Roboto Slab',serif;
+        font-size: 16px;
 
         &::placeholder{
             color: #666360;
         }
 
-        input:-webkit-autofill,
-        input:-webkit-autofill:hover,
-        input:-webkit-autofill:focus,
-        input:-webkit-autofill:active {
+        select:-webkit-autofill,
+        select:-webkit-autofill:hover,
+        select:-webkit-autofill:focus,
+        select:-webkit-autofill:active {
             transition: background-color 5000s ease-in-out 0s, color 5000s ease-in-out 0s;
             transition-delay: background-color 5000s, color 5000s;
+        }
+
+        option{
+            background: #232129;
+            color: #AFAFAF;
+
+            &:hover{
+                background-color: #3e3b47;
+            }
         }
     }
 

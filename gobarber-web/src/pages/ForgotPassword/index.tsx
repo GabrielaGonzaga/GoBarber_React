@@ -37,7 +37,8 @@ const ForgotPassword: React.FC = () => {
 
             addToast({
                 type: 'sucess',
-                title: 'Login realizado com sucesso'
+                title: 'Sucesso',
+                description: 'Email de Recuperação enviado com êxito'
             });
 
             // history.push('/dashboard');

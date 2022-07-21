@@ -5,7 +5,7 @@ import api from '../services/api';
 interface User{
     id: string; 
     name: string; 
-    avatar: string;
+    avatar_url: string;
 }
 
 interface AuthState{

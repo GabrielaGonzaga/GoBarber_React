@@ -55,7 +55,6 @@ export const Profile = styled.div`
         }
 
         strong{
-            margin-left: 24px;
             color: #fff;
             font-size: 20px;
         }
@@ -265,6 +264,57 @@ export const Calendar = styled.aside`
     }
 `;
 
-// export const Calendar = styled.aside`
-//     width: 380px;
-// `;
+export const NewAppointment = styled.div`
+    position: absolute;
+    top: 20%;
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto;
+    width: 40rem;
+    height: 40rem;
+    background-color: #312e38;
+    box-shadow: 0px 0px 30px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+
+    > svg{
+        margin-top: 4rem;
+        margin-left: 85%;
+        width: 30px;
+        height: 30px;
+        color: #979797;
+        cursor: pointer;
+        transition: color 0.2s;
+    }
+    
+    > svg:hover{
+        color: #f4f4f4;
+    }
+    
+
+    form{
+        margin: 3rem 0;
+        width: 32rem;
+        margin-left: auto; 
+        margin-right: auto;
+        text-align: center;
+
+        h1{
+            font-size: 2rem;
+        }
+
+        p{
+            margin-bottom: 3rem;
+            font-weight: lighter;
+            color: #979797;
+        }
+
+        div{
+            margin-bottom: 1rem;
+        }
+
+    }    
+`;
+export const ContentCol = styled.div`
+    width: 380px;
+`;
